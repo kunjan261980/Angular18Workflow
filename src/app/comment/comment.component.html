@@ -1,0 +1,49 @@
+<div class="container">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>PostId </th>
+                <th>Id </th>
+                <th>Name</th>
+                <th>Email </th>
+                <th>Body</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container>
+                
+            @for(comment of Comments; track $index)
+            {
+                <tr>
+                    <td>
+                        <input type="text" readonly class = "form-control" [(ngModel)] = "comment.postId" #postId = "ngModel"/>
+                    </td>
+                    <td>
+                        <input type="text"readonly  class = "form-control" [(ngModel)] = "comment.id" #id = "ngModel"/>
+                    </td>
+                    <td>
+                        <input type="text" class = "form-control" [(ngModel)] = "comment.name" #name = "ngModel"/>
+                    </td>
+                    <td>
+                        <input type="text" class = "form-control" [(ngModel)] = "comment.email" #email = "ngModel"/>
+                    </td>
+                    <td>
+                        <input type="text" class = "form-control" [(ngModel)] = "comment.body" #body = "ngModel"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" (click)="copyRow($index)">Copy Row</button>&nbsp;&nbsp;
+                        <button class="btn btn-primary" (click)="resetRow($index)">Reset Row</button>&nbsp;&nbsp;
+                        <button class="btn btn-primary"(click)="deleteRow($index)">Delete Row</button>&nbsp;&nbsp;
+                      @if($index+1 === Comments.length)
+                      {
+                        <button class="btn btn-primary"(click)="addRow()">Add Row</button>&nbsp;&nbsp;
+                      }
+                    </td>
+                </tr>
+             } 
+                
+        </ng-container>
+        </tbody>
+    </table>
+</div>
